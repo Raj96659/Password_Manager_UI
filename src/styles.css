@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===== Global Reset ===== */
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+/* ===== Page Container ===== */
+.page {
+  padding: 30px 0;
+}
+
+/* ===== Cards ===== */
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  margin-bottom: 25px;
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* ===== Inputs ===== */
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+/* ===== Buttons ===== */
+button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  background: #2563eb;
+  color: white;
+  transition: 0.2s ease;
+  font-weight: 500;
+}
+
+button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+button.secondary {
+  background: #6b7280;
+}
+
+button.danger {
+  background: #dc2626;
+}
+
+/* ===== Titles ===== */
+h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}

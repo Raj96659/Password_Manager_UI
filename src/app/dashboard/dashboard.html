@@ -1,0 +1,45 @@
+template: `
+<h2>Dashboard</h2>
+
+<div class="cards">
+  <div class="box">
+    <h3>Total</h3>
+    <p>{{data()?.totalPasswords}}</p>
+  </div>
+
+  <div class="box">
+    <h3>Weak</h3>
+    <p>{{data()?.weakPasswords}}</p>
+  </div>
+
+  <div class="box">
+    <h3>Reused</h3>
+    <p>{{data()?.reusedPasswords}}</p>
+  </div>
+
+  <div class="box">
+    <h3>Old</h3>
+    <p>{{data()?.oldPasswords}}</p>
+  </div>
+</div>
+
+<button (click)="load()">Refresh</button>
+`,
+styles: [`
+.cards {
+  display:flex;
+  gap:20px;
+}
+.box {
+  background:white;
+  padding:20px;
+  border-radius:8px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+  width:120px;
+  text-align:center;
+}
+.box p {
+  font-size:22px;
+  font-weight:bold;
+}
+`]
