@@ -1,0 +1,61 @@
+<h2>Security Center</h2>
+
+<div class="card">
+  <input 
+    [(ngModel)]="masterPassword"
+    placeholder="Enter Master Password"
+    type="password"
+  />
+
+  <button (click)="load()">Run Security Audit</button>
+</div>
+
+<div *ngIf="audit()" class="audit-section">
+
+  <!-- 🔐 Security Score -->
+  <div class="score-box">
+    <h3>Security Score</h3>
+
+    <div class="score-container">
+      <div class="score-bar"
+           [style.width.%]="audit()?.securityScore"
+           [ngClass]="getScoreClass(audit()?.securityScore)">
+      </div>
+    </div>
+
+    <p class="score-text">
+      {{audit()?.securityScore}} / 100
+    </p>
+  </div>
+
+  <!-- Weak -->
+  <div class="audit-box">
+    <h3>Weak Passwords ({{audit()?.weakCount}})</h3>
+    <ul>
+      <li *ngFor="let w of audit()?.weakAccounts">
+        {{w}}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Reused -->
+  <div class="audit-box">
+    <h3>Reused Passwords ({{audit()?.reusedCount}})</h3>
+    <ul>
+      <li *ngFor="let r of audit()?.reusedAccounts">
+        {{r}}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Strong Passwords ✅ NEW -->
+  <div class="audit-box">
+    <h3>Strong Passwords ({{audit()?.strongCount}})</h3>
+    <ul>
+      <li *ngFor="let s of audit()?.strongAccounts">
+        {{s}}
+      </li>
+    </ul>
+  </div>
+
+</div>

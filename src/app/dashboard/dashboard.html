@@ -1,45 +1,49 @@
-template: `
-<h2>Dashboard</h2>
+<div class="page">
 
-<div class="cards">
-  <div class="box">
-    <h3>Total</h3>
-    <p>{{data()?.totalPasswords}}</p>
+  <h2>Password Security Overview</h2>
+
+  <p class="subtitle">
+    Monitor the health of your stored passwords.
+  </p>
+
+  <input 
+    [(ngModel)]="masterPassword" 
+    type="password" 
+    placeholder="Enter Master Password"
+  />
+
+  <button (click)="load()">Load Dashboard</button>
+
+  <div class="dashboard-grid">
+
+    <!-- Total -->
+    <div class="card stat">
+      <h4>Total Passwords</h4>
+      <p>{{ data()?.totalPasswords ?? 0 }}</p>
+      <span>All saved accounts</span>
+    </div>
+
+    <!-- Weak -->
+    <div class="card stat warning">
+      <h4>Weak Passwords</h4>
+      <p>{{ data()?.weakPasswords ?? 0 }}</p>
+      <span>Easy to guess passwords</span>
+    </div>
+
+    <!-- Strong (NEW) -->
+    <div class="card stat success">
+      <h4>Strong Passwords</h4>
+      <p>{{ data()?.strongPasswords ?? 0 }}</p>
+      <span>Secure passwords</span>
+    </div>
+
+    <!-- Reused -->
+    <div class="card stat danger">
+      <h4>Reused Passwords</h4>
+      <p>{{ data()?.reusedPasswords ?? 0 }}</p>
+      <span>Used across multiple accounts</span>
+    </div>
+
   </div>
 
-  <div class="box">
-    <h3>Weak</h3>
-    <p>{{data()?.weakPasswords}}</p>
-  </div>
-
-  <div class="box">
-    <h3>Reused</h3>
-    <p>{{data()?.reusedPasswords}}</p>
-  </div>
-
-  <div class="box">
-    <h3>Old</h3>
-    <p>{{data()?.oldPasswords}}</p>
-  </div>
 </div>
-
-<button (click)="load()">Refresh</button>
-`,
-styles: [`
-.cards {
-  display:flex;
-  gap:20px;
-}
-.box {
-  background:white;
-  padding:20px;
-  border-radius:8px;
-  box-shadow:0 2px 5px rgba(0,0,0,0.1);
-  width:120px;
-  text-align:center;
-}
-.box p {
-  font-size:22px;
-  font-weight:bold;
-}
-`]

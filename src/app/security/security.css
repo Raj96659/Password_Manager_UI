@@ -1,0 +1,89 @@
+h2 {
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  max-width: 400px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 14px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.audit-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.audit-box, .score-box {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 250px;
+}
+
+.audit-box ul {
+  padding-left: 20px;
+}
+
+.audit-box li {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+/* 🔐 Score Meter */
+
+.score-container {
+  width: 100%;
+  background: #e5e7eb;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.score-bar {
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.green {
+  background: #16a34a;
+}
+
+.yellow {
+  background: #eab308;
+}
+
+.red {
+  background: #dc2626;
+}
+
+.score-text {
+  font-weight: bold;
+  font-size: 18px;
+}
