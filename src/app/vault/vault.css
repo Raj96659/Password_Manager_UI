@@ -1,0 +1,231 @@
+.vault-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 10px 40px 10px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.toolbar input {
+  width: 320px;                 /* fixed width instead of 1fr */
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+}
+
+.toolbar select {
+  width: 180px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+}
+
+.toolbar button {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form-actions {
+  margin-top: 25px;
+  display: flex;
+  gap: 14px;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.form-actions .primary {
+  background: #2563eb;
+  color: white;
+}
+
+.form-actions .secondary {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.add-card {
+  background: white;
+  padding: 40px;              /* increased from 25px */
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  margin-bottom: 40px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;                  /* more visible spacing */
+  margin-top: 25px;
+}
+
+.form-grid input {
+  width: 100%;
+  padding: 16px 18px;         /* taller inputs */
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;        /* slight contrast */
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-actions {
+  margin-top: 20px;
+}
+
+.form-actions button {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.password-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.password-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+}
+
+.password-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.category {
+  font-size: 12px;
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.card-body {
+  margin-bottom: 12px;
+  color: #475569;
+}
+
+.password-preview {
+  font-family: monospace;
+  letter-spacing: 2px;
+  color: #94a3b8;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.card-actions button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.card-actions button:first-child {
+  background: #2563eb;
+  color: white;
+}
+
+.danger {
+  background: #dc2626;
+  color: white;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  width: 350px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #111827;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+}
+
+.loader {
+  margin-bottom: 15px;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.modal-actions button {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.modal-actions .primary {
+  background: #2563eb;
+  color: white;
+}
+
+.modal-actions .secondary {
+  background: #e2e8f0;
+  color: #1e293b;
+}

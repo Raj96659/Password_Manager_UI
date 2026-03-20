@@ -1,1 +1,113 @@
-<p>vault works!</p>
+<div class="vault-container">
+
+  <h2 class="title">Password Vault</h2>
+
+  <div class="toolbar">
+    <input [(ngModel)]="searchKeyword" placeholder="🔍 Search account..." />
+
+    <select [(ngModel)]="selectedCategory">
+      <option value="">All Categories</option>
+      <option>Social Media</option>
+      <option>Banking</option>
+      <option>Email</option>
+      <option>Shopping</option>
+      <option>Work</option>
+      <option>Other</option>
+    </select>
+
+    <select [(ngModel)]="sortBy">
+      <option value="">Sort By</option>
+      <option value="accountName">Name</option>
+      <option value="createdAt">Date Added</option>
+      <option value="category">Category</option>
+    </select>
+
+    <button (click)="applyFilters()">Apply</button>
+    <button (click)="load()">Reset</button>
+    <button (click)="loadFavorites()">Favorites</button>
+  </div>
+
+  <div *ngIf="isLoading" class="loader">Loading...</div>
+
+  <div class="add-card">
+    <h3>{{ editMode ? 'Update Password' : 'Add New Password' }}</h3>
+
+    <div class="form-grid">
+      <input [(ngModel)]="masterPassword" type="password" placeholder="Master Password" />
+      <input [(ngModel)]="accountName" placeholder="Account Name" />
+      <input [(ngModel)]="username" placeholder="Username" />
+      <input [(ngModel)]="password" placeholder="Password" />
+      <input [(ngModel)]="category" placeholder="Category" />
+    </div>
+
+    <div class="form-actions">
+      <button *ngIf="!editMode" class="primary" (click)="add()">Add Password</button>
+      <button *ngIf="editMode" class="primary" (click)="update()">Update</button>
+      <button *ngIf="editMode" class="secondary" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div>
+
+  <div class="password-grid">
+    <div class="password-card" *ngFor="let p of passwords()">
+
+      <div class="card-header">
+        <h4>{{p.accountName}}</h4>
+        <span class="category">{{p.category}}</span>
+      </div>
+
+      <div class="card-body">
+        <p>
+          {{p.username}}
+          <span class="copy" (click)="copy(p.username)">📋</span>
+        </p>
+        <div class="password-preview">••••••••</div>
+      </div>
+
+      <div class="card-actions">
+        <button (click)="openView(p.id)">View</button>
+        <button (click)="edit(p)">Edit</button>
+        <button (click)="toggleFavorite(p.id)">
+          {{p.favorite ? '⭐' : '☆'}}
+        </button>
+        <button class="danger" (click)="confirmDelete(p.id)">Delete</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VIEW MODAL -->
+  <div class="modal" *ngIf="showViewModal">
+    <div class="modal-content">
+      <h3>Re-enter Master Password</h3>
+
+      <input [(ngModel)]="viewMasterPassword" type="password" placeholder="Master Password" />
+
+      <div class="modal-actions">
+        <button class="primary" (click)="verifyView()">Verify</button>
+        <button class="secondary" (click)="closeView()">Cancel</button>
+      </div>
+
+      <div *ngIf="viewedPassword">
+        <h4>Decrypted Password:</h4>
+        <p>{{viewedPassword}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELETE MODAL -->
+  <div class="modal" *ngIf="showDeleteModal">
+    <div class="modal-content">
+      <h3>Delete Password?</h3>
+      <p>This action cannot be undone.</p>
+
+      <button (click)="cancelDelete()">Cancel</button>
+      <button class="danger" (click)="deleteConfirmed()">Yes Delete</button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" *ngIf="showToast">
+    {{toastMessage}}
+  </div>
+
+</div>
