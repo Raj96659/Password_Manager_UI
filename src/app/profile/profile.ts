@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../environments/environment';
 
 @Component({
   standalone: true,
@@ -146,7 +147,7 @@ export class Profile {
 
   updateProfile() {
 
-    this.http.put('http://localhost:8080/auth/profile', {
+    this.http.put(`${environment.apiUrl}/auth/profile`, {
       name: this.name,
       email: this.email,
       phone: this.phone
@@ -164,7 +165,7 @@ export class Profile {
 
   changeMasterPassword() {
 
-    this.http.put('http://localhost:8080/auth/change-master-password', {
+    this.http.put(`${environment.apiUrl}/auth/change-master-password`, {
       currentPassword: this.currentPassword,
       newPassword: this.newPassword
     }).subscribe({
@@ -183,7 +184,7 @@ export class Profile {
 
   toggle2FA() {
 
-    this.http.put('http://localhost:8080/auth/2fa', {})
+    this.http.put(`${environment.apiUrl}/auth/2fa`, {})
       .subscribe({
         next: (res: any) => {
           this.successMessage = res;

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../environments/environment';
 
 @Component({
   standalone: true,
@@ -278,7 +279,7 @@ export class Recover {
   fetchQuestions() {
 
     this.http.get<string[]>(
-      `http://localhost:8080/auth/recover/questions?username=${this.username}`
+      `${environment.apiUrl}/auth/recover/questions?username=${this.username}`
     ).subscribe({
       next: (res) => {
         this.questions = res;
@@ -291,31 +292,12 @@ export class Recover {
     });
   }
 
-//   recover() {
 
-//     this.http.post(
-//       'http://localhost:8080/auth/recover-master-password',
-//       {
-//         username: this.username,
-//         answers: this.answers,
-//         newPassword: this.newPassword
-//       }
-//     ).subscribe({
-//       next: () => {
-//         this.successMessage = "Master password reset successfully";
-//         this.errorMessage = "";
-//       },
-//       error: () => {
-//         this.errorMessage = "Recovery failed";
-//         this.successMessage = "";
-//       }
-//     });
-//   }
 
 recover() {
 
   this.http.post<string>(
-    'http://localhost:8080/auth/recover',
+    `${environment.apiUrl}/auth/recover`,
     {
       username: this.username,
       answers: this.answers,

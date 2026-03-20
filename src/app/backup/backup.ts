@@ -1,170 +1,11 @@
-// import { Component } from '@angular/core';
-// import { FormsModule } from '@angular/forms';
-// import { HttpClient } from '@angular/common/http';
-// import { CommonModule } from '@angular/common';
 
-// @Component({
-//   standalone: true,
-//   selector: 'app-backup',
-//   imports: [CommonModule, FormsModule],
-//   template: `
-//   <div class="container">
-
-//     <div class="card">
-//       <h2>Vault Backup</h2>
-
-//       <input [(ngModel)]="masterPassword"
-//              type="password"
-//              placeholder="Enter Master Password">
-
-//       <button (click)="exportVault()">Export Vault</button>
-
-//       <hr>
-
-//       <h3>Import Vault</h3>
-
-//       <textarea [(ngModel)]="importData"
-//                 placeholder="Paste encrypted backup data here"></textarea>
-
-//       <button (click)="importVault()">Import Vault</button>
-
-//       <p class="success" *ngIf="successMessage">{{successMessage}}</p>
-//       <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
-//     </div>
-
-//   </div>
-//   `,
-//   styles: [`
-//     .container {
-//       display:flex;
-//       justify-content:center;
-//       padding:40px;
-//       background:#f1f5f9;
-//       min-height:100vh;
-//     }
-
-//     .card {
-//       background:white;
-//       padding:30px;
-//       width:500px;
-//       border-radius:8px;
-//       box-shadow:0 4px 10px rgba(0,0,0,0.1);
-//     }
-
-//     input, textarea {
-//       width:100%;
-//       margin:10px 0;
-//       padding:8px;
-//       border:1px solid #ccc;
-//       border-radius:4px;
-//     }
-
-//     textarea {
-//       height:120px;
-//       resize:none;
-//     }
-
-//     button {
-//       margin-top:8px;
-//       padding:8px 12px;
-//       background:#2563eb;
-//       color:white;
-//       border:none;
-//       border-radius:4px;
-//       cursor:pointer;
-//     }
-
-//     button:hover {
-//       background:#1d4ed8;
-//     }
-
-//     .success {
-//       color:green;
-//       margin-top:10px;
-//     }
-
-//     .error {
-//       color:red;
-//       margin-top:10px;
-//     }
-//   `]
-// })
-// export class Backup {
-
-//   masterPassword = '';
-//   importData = '';
-
-//   successMessage = '';
-//   errorMessage = '';
-
-//   constructor(private http: HttpClient) {}
-
-//   exportVault() {
-
-//     if (!this.masterPassword) {
-//       this.errorMessage = "Master password required";
-//       return;
-//     }
-
-//     this.http.get(
-//       `http://localhost:8080/vault/backup/export?masterPassword=${this.masterPassword}`,
-//       { responseType: 'text' }
-//     ).subscribe({
-//       next: (res) => {
-//         this.downloadFile(res);
-//         this.successMessage = "Vault exported successfully";
-//         this.errorMessage = "";
-//       },
-//       error: () => {
-//         this.errorMessage = "Export failed";
-//         this.successMessage = "";
-//       }
-//     });
-//   }
-
-//   importVault() {
-
-//     if (!this.masterPassword || !this.importData) {
-//       this.errorMessage = "All fields required";
-//       return;
-//     }
-
-//     this.http.post(
-//       `http://localhost:8080/vault/backup/import?masterPassword=${this.masterPassword}`,
-//       this.importData,
-//       { responseType: 'text' }
-//     ).subscribe({
-//       next: () => {
-//         this.successMessage = "Vault imported successfully";
-//         this.errorMessage = "";
-//         this.importData = '';
-//       },
-//       error: () => {
-//         this.errorMessage = "Import failed";
-//         this.successMessage = "";
-//       }
-//     });
-//   }
-
-//   downloadFile(data: string) {
-
-//     const blob = new Blob([data], { type: 'text/plain' });
-//     const url = window.URL.createObjectURL(blob);
-
-//     const a = document.createElement('a');
-//     a.href = url;
-//     a.download = 'vault-backup.txt';
-//     a.click();
-
-//     window.URL.revokeObjectURL(url);
-//   }
-// }
 
 
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../environments/environment';
 
 @Component({
   standalone: true,
@@ -302,7 +143,7 @@ export class Backup {
     }
 
     this.http.get(
-      `http://localhost:8080/vault/backup/export?masterPassword=${this.masterPassword}`,
+    `${environment.apiUrl}/vault/backup/export?masterPassword=${this.masterPassword}`,
       { responseType: 'text' }
     ).subscribe({
       next: (res) => {

@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../environments/environment';
 
 @Component({
   standalone: true,
@@ -53,10 +54,7 @@ import { CommonModule } from '@angular/common';
       <input [(ngModel)]="category" placeholder="Category" />
     </div>
 
-<!-- <div class="form-actions">
-  <button class="primary" (click)="update()">Update</button>
-  <button class="secondary" (click)="cancelEdit()">Cancel</button>
-</div> -->
+
 
   <div class="form-actions">
 
@@ -394,7 +392,7 @@ styles: [`
 })
 export class Vault {
 
-  baseUrl = 'http://localhost:8080/vault';
+  baseUrl = `${environment.apiUrl}/vault`;
 
   passwords = signal<any[]>([]);
   isLoading = false;
@@ -497,18 +495,7 @@ export class Vault {
     });
   }
 
-  // update() {
-  //   if (this.editId === null) return;
 
-  //   this.http.put(
-  //     `${this.baseUrl}/update/${this.editId}?masterPassword=${this.masterPassword}`,
-  //     { accountName: this.accountName, username: this.username, password: this.password, category: this.category }
-  //   ).subscribe(() => {
-  //     this.toast("Updated");
-  //     this.load();
-  //     this.editMode = false;
-  //   });
-  // }
 
 
   update() {
@@ -542,14 +529,6 @@ export class Vault {
   });
 
 }
-
-  // edit(p: any) {
-  //   this.editMode = true;
-  //   this.editId = p.id;
-  //   this.accountName = p.accountName;
-  //   this.username = p.username;
-  //   this.category = p.category;
-  // }
 
   edit(p: any) {
 

@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   standalone: true,
@@ -177,7 +178,7 @@ export class Security {
     }
 
     this.http.get(
-      `http://localhost:8080/vault/audit?masterPassword=${this.masterPassword}`
+      `${environment.apiUrl}/vault/audit?masterPassword=${this.masterPassword}`
     ).subscribe({
       next: (res: any) => {
         this.audit.set(res);

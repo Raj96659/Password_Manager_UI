@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { environment } from '../environments/environment';
 
 @Component({
   standalone: true,
@@ -106,7 +107,7 @@ export class TwoFA {
   this.error = '';
 
   this.http.post(
-    `http://localhost:8080/auth/verify-otp?username=${username}&otp=${this.otp}`,
+    `${environment.apiUrl}/auth/verify-otp?username=${username}&otp=${this.otp}`,
     {}
   ).subscribe({
     next: (res: any) => {

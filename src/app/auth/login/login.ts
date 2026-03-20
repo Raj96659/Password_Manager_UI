@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   standalone: true,
@@ -221,9 +222,11 @@ export class Login {
       return;
     }
 
-    this.http.post<any>('http://localhost:8080/auth/login', {
-      username: this.username,
-      masterPassword: this.masterPassword
+    this.http.get<any>(environment.apiUrl +'/auth/login', {
+      params: {
+        username: this.username,
+        masterPassword: this.masterPassword
+      }
     }).subscribe({
       next: (res) => {
         localStorage.setItem('token', res.token);

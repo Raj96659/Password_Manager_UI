@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../environments/environment';
 
 @Component({
   standalone: true,
@@ -289,10 +290,7 @@ export class Generator {
     else this.strength.set('Very Strong');
   }
 
-//   copy() {
-//     navigator.clipboard.writeText(this.generated());
-//     this.copiedMessage = "Password copied to clipboard!";
-//   }
+
 
 copy() {
   navigator.clipboard.writeText(this.generated());
@@ -314,7 +312,7 @@ copy() {
     }
 
     this.http.post(
-      `http://localhost:8080/vault/add?masterPassword=${this.masterPassword}`,
+      `${environment.apiUrl}/vault/add?masterPassword=${this.masterPassword}`,
       {
         accountName: this.accountName,
         username: this.username,

@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../../environments/environment';
 
 @Component({
   standalone: true,
@@ -137,9 +138,7 @@ export class Dashboard {
   masterPassword = '';
   data = signal<any>(null);
 
-  // constructor(private http: HttpClient) {
-  //   this.load(); // auto-load on page open
-  // }
+
 
   constructor(private http: HttpClient) {}
 
@@ -150,8 +149,8 @@ load() {
     return;
   }
 
-  this.http.post(
-    'http://localhost:8080/vault/dashboard',
+  this.http.post<any>(
+    `${environment.apiUrl}/vault/dashboard`,
     { masterPassword: this.masterPassword }
   ).subscribe({
     next: (res: any) => this.data.set(res),
