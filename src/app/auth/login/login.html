@@ -1,1 +1,40 @@
 
+<div class="login-wrapper">
+
+  <div class="login-card">
+
+    <div class="brand">
+      <div class="logo">🔐</div>
+      <h1><span>REV</span> Password Manager</h1>
+      <p>Secure access to your encrypted vault</p>
+    </div>
+
+    <div class="form">
+
+      <div class="input-group">
+        <label>Username</label>
+        <input [(ngModel)]="username"
+               placeholder="Enter your username">
+      </div>
+
+      <div class="input-group">
+        <label>Master Password</label>
+        <input [(ngModel)]="masterPassword"
+               type="password"
+               placeholder="Enter your master password">
+      </div>
+
+      <button (click)="login()">Login</button>
+
+      <div class="links">
+        <a routerLink="/recover">Forgot Master Password?</a>
+        <p>New user? <a routerLink="/register">Create Account</a></p>
+      </div>
+
+      <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+
+    </div>
+
+  </div>
+
+</div>
