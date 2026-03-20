@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { Layout } from './layout';
+import { Landing } from './landing';
 import { Login } from './auth/login/login';
 import { Register } from './register/register';
 import { Dashboard } from './dashboard/dashboard';
@@ -12,11 +13,13 @@ import { Profile } from './profile/profile';
 import { Recover } from './recover/recover';
 import { Backup } from './backup/backup';
 
+
 import { authGuard } from './core/gaurds/auth-guard';
 
 export const routes: Routes = [
 
-  { path: '', component: Login },
+  { path: '', component: Landing },
+  { path: 'login', component: Login },
   { path: 'register', component: Register },
   { path: 'recover', component: Recover },
   { path: '2fa', component: TwoFA },
