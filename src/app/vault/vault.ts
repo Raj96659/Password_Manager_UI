@@ -485,15 +485,45 @@ export class Vault {
       .subscribe(res => this.passwords.set(res as any));
   }
 
+  // add() {
+  //   this.http.post(
+  //     `${this.baseUrl}/add?masterPassword=${this.masterPassword}`,
+  //     { accountName: this.accountName, username: this.username, password: this.password, category: this.category }
+  //   ).subscribe(() => {
+  //     this.toast("Added");
+  //     this.load();
+  //   });
+  // }
+
   add() {
-    this.http.post(
-      `${this.baseUrl}/add?masterPassword=${this.masterPassword}`,
-      { accountName: this.accountName, username: this.username, password: this.password, category: this.category }
-    ).subscribe(() => {
+  this.http.post(
+    `${this.baseUrl}/add?masterPassword=${this.masterPassword}`,
+    {
+      accountName: this.accountName,
+      username: this.username,
+      password: this.password,
+      category: this.category
+    }
+  ).subscribe({
+    next: () => {
       this.toast("Added");
-      this.load();
-    });
-  }
+
+      // 🔥 CLEAR FORM
+      this.accountName = '';
+      this.username = '';
+      this.password = '';
+      this.category = '';
+
+      // optional
+      // this.masterPassword = '';
+
+      this.load(); // reload list
+    },
+    error: (err) => {
+      console.error(err);
+    }
+  });
+}
 
 
 
